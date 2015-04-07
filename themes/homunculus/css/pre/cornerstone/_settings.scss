@@ -19,13 +19,14 @@ $col_pad_h: 1em;
 ** Media queries
 **
 ** List in descending order
-** Largest (thus, first) will be just min-width
+** Smallest (thus, first) will be just max-width
 */
 $break_points: (
-	'dklg' 1200px
-,	'tbsm' 950px
-,	'mblg' 700px
-,	'mbsm' 450px
+	'mbsm' 699px
+,	'mblg' 450px
+,	'tbsm' 700px
+,	'dk'   950px
+,	'dklg' 1230px
 );
 
 // Name of default breakpoint

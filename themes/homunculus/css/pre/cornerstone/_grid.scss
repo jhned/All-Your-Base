@@ -27,29 +27,6 @@ $col_pad: $col_pad_v $col_pad_h;
 	&:last-child:not([class*='pull'], :first-child) {float: right;}
 	&.nopad {padding: 0;}
 }
-@for $x from 1 through $grid_column_count {
-
-	// Set grid
-	.#{$bp_default}-#{$x}, .all-#{$x} {
-		width: round($x / $grid_column_count * 100%);
-	}
-	// Multiple rows of .columns in one .row
-	$rounded_number: round( $grid_column_count / $x );
-	.multi-row .#{$bp_default}-#{$x}:nth-child(#{ $rounded_number }n+1) {
-		clear: both;
-	}
-
-	// Push and pull
-	.#{$bp_default}-push-#{$x} {
-		left: round($x / $grid_column_count * 100%);
-		right: auto;
-	}
-	.#{$bp_default}-pull-#{$x} {
-		left: auto;
-		right: round($x / $grid_column_count * 100%);
-	}
-
-}
 
 /*
 ** "Just put it in a table"
@@ -77,7 +54,7 @@ $stack_columns_index: index_from_key($break_points, $bp_stack_columns);
 @media (nth($mq, 2)) {
 
 	// For the stacked media query and smaller
-	@if index($media_queries, $mq) >= $stack_columns_index {
+	@if index($media_queries, $mq) == 1 {
 
 		// Unset grid
 	  .column {
@@ -99,7 +76,7 @@ $stack_columns_index: index_from_key($break_points, $bp_stack_columns);
 	@for $x from 1 through $grid_column_count {
 		// Set grid
 		.#{ nth($mq, 1) }-#{ $x } {
-			width: round($x / $grid_column_count * 100%);
+			width: $x / $grid_column_count * 100%;
 			float: left;
 
 			&:last-child:not([class*='pull'], :first-child) {float: right;}
@@ -113,12 +90,12 @@ $stack_columns_index: index_from_key($break_points, $bp_stack_columns);
 
 		// Push and pull
 		.#{ nth($mq, 1) }-push-#{$x} {
-			left: round($x / $grid_column_count * 100%);
+			left: $x / $grid_column_count * 100%;
 			right: auto;
 		}
 		.#{ nth($mq, 1) }-pull-#{$x} {
 			left: auto;
-			right: round($x / $grid_column_count * 100%);
+			right: $x / $grid_column_count * 100%;
 		}
 	}
 
